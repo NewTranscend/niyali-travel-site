@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Niyali Travel – Maldives Holiday Packages & Tours</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script defer src="main.js"></script>
+</head>
+<body>
+  <!-- Header aligned to the right -->
+  <header class="header-right-align">
+    <div class="header-content">
+      <nav>
+        <a href="#niyali">Niyali</a>
+        <a href="#services">Services</a>
+        <!-- Dropdown for Atolls -->
+        <div class="dropdown">
+          <button class="dropbtn" tabindex="0">Atolls <i class="fa fa-caret-down"></i></button>
+          <div class="dropdown-content" id="atoll-dropdown">
+            <span>Loading...</span>
+          </div>
+        </div>
+        <!-- Dropdown for Islands with Guest Houses -->
+        <div class="dropdown">
+          <button class="dropbtn" tabindex="0">Islands <i class="fa fa-caret-down"></i></button>
+          <div class="dropdown-content" id="island-dropdown">
+            <span>Loading...</span>
+          </div>
+        </div>
+        <!-- Dropdown for Guest Houses -->
+        <div class="dropdown">
+          <button class="dropbtn" tabindex="0">Guest Houses <i class="fa fa-caret-down"></i></button>
+          <div class="dropdown-content" id="guesthouse-dropdown">
+            <span>Loading...</span>
+          </div>
+        </div>
+      </nav>
+      <div style="display:flex;align-items:center;">
+        <img src="niyali-logo.png" alt="Niyali Travel Logo" class="logo-img" style="height:60px;" />
+        <button onclick="updateImage('logo')" style="margin-left:8px;">Update Logo</button>
+      </div>
+    </div>
+    <div class="actions">
+      <a href="#" class="login-btn" id="openContact">Contact Us</a>
+      <!-- Removed Get a Quote button as requested -->
+    </div>
+  </header>
+
+  <!-- Contact Modal -->
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2>Contact Us</h2>
+      <div class="modal-links">
+        <a href="mailto:sales@niyalitravel.com"><i class="fa fa-envelope"></i> Email</a>
+        <a href="https://wa.me/9609107338" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      </div>
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="How can we help?" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Maldives Banner Image -->
+  <div class="header-image" style="position:relative;">
+    <img src="maldives-header.png" alt="Maldives Banner" id="headerImg" style="width:100%;max-height:240px;object-fit:cover;" />
+    <button onclick="updateImage('header')" style="position:absolute;top:10px;right:10px;z-index:2;">Update Header Image</button>
+  </div>
+
+  <!-- Booking Engine Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Maldives Holidays & Tour Packages</h1>
+      <p class="subtitle">Book your dream Maldives getaway with handpicked hotels, guest houses, tours & exclusive deals.</p>
+      <form class="search-bar" onsubmit="return searchPackages();">
+        <input type="text" id="search-hotel" placeholder="Hotel, Guest House or Tour">
+        <input type="date" id="search-checkin" placeholder="Check-in">
+        <input type="date" id="search-checkout" placeholder="Check-out">
+        <input type="number" min="1" id="search-guests" placeholder="Guests">
+        <select id="search-type">
+          <option>All Types</option>
+          <option>Hotel</option>
+          <option>Guest House</option>
+          <option>Tour</option>
+        </select>
+        <button type="submit">Search & Book</button>
+      </form>
+      <pre id="package-results" style="background:#f5f5f5;border-radius:6px;padding:12px;margin-top:18px;"></pre>
+    </div>
+  </section>
+
+  <!-- Guest Houses Section -->
+  <section class="resorts" id="guesthouses">
+    <h2>Maldives Popular Hotels & Guest Houses</h2>
+    <div class="cards" id="guesthouses-cards">
+      <span>Loading...</span>
+    </div>
+  </section>
+
+  <!-- Tour Bookings Page Section -->
+  <section class="tours" id="tours">
+    <h2>Book Your Maldives Tours</h2>
+    <div class="cards" id="tours-cards">
+      <span>Loading...</span>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <h2>Why Book With Niyali Travel?</h2>
+    <div class="about-content">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Niyali Travel Team">
+      <div>
+        <p><strong>Niyali Travel</strong> is a Maldives-based travel company offering curated holiday packages, hotels, guest houses, tours and personalized services. We work directly with local resorts and service providers to ensure you get the best deals, authentic experiences, and dedicated support.</p>
+        <ul>
+          <li>✔ Handpicked Maldives hotels, guest houses & tours</li>
+          <li>✔ Local knowledge & trusted agents</li>
+          <li>✔ Flexible packages & custom itineraries</li>
+          <li>✔ 24/7 support before and during your trip</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-row">
+      <div>
+        <strong>Niyali Travel</strong>
+        <p>&copy; 2025 All rights reserved.</p>
+      </div>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://facebook.com/NiyaliTravel" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+        <a href="https://instagram.com/niyalitravel" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://tiktok.com/@niyalitravel" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
